@@ -1,7 +1,8 @@
-package br.ufscar.dc.a619680.desafiomobile
+package br.ufscar.dc.a619680.desafiomobile.scenarios.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import br.ufscar.dc.a619680.desafiomobile.R
 
 class MainActivity : AppCompatActivity() {
 
