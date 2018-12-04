@@ -18,12 +18,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="invisible"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvCocktails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/cocktail_list_item"/>
     </FrameLayout>
 
 
     <Button
         android:id="@+id/randomButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
         android:text="@string/random_button_txt" />
 </LinearLayout>

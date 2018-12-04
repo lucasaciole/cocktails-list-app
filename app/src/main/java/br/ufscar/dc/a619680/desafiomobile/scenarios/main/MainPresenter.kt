@@ -10,8 +10,6 @@ import retrofit2.Callback
 class MainPresenter(val view : MainContract.View) : MainContract.Presenter {
 
     override fun onActivityStart(){
-        view.showLoadingCircle()
-
         val cocktailsService = RetrofitInitializer().createCocktailsService()
 
         val call = cocktailsService.getAlcoholicCocktails()
@@ -25,21 +23,21 @@ class MainPresenter(val view : MainContract.View) : MainContract.Presenter {
             override fun onResponse(call: Call<CocktailList>, response: Response<CocktailList>) {
                 view.hideLoadingCircle()
                 if(response.body() != null){
-                    view.showMessage("Tudo certo!")
+                    view.showDrinksList(response.body()!!.drinks)
                 }else {
                     view.showMessage("Esse drink não está disponível")
                 }
             }
         })
 
-        view.hideLoadingCircle()
+
     }
 
     override fun onRandomButtonClicked() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onCocktailClicked() {
+    override fun onCocktailClicked(cocktails: Cocktail) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
