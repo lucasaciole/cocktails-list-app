@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">DesafioMobile</string>
+    <string name="all_cocktails_button_txt">Drinks Alcóolicos</string>
+    <string name="alcoolholics_button_txt">Drinks Alcóolicos</string>
+    <string name="random_button_txt">Drinks Aleatório</string>
 </resources>
