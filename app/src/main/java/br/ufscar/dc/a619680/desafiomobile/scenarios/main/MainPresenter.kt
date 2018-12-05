@@ -34,7 +34,21 @@ class MainPresenter(val view : MainContract.View) : MainContract.Presenter {
     }
 
     override fun onRandomButtonClicked() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val cocktailsService = RetrofitInitializer().createCocktailsService()
+        val call = cocktailsService.getRandomDrink()
+        call.enqueue(object : Callback<CocktailList> {
+            override fun onFailure(call: Call<CocktailList>, t: Throwable) {
+                view.showMessage("Problema ao contatar servidor! Verifique sua conexão.")
+            }
+
+            override fun onResponse(call: Call<CocktailList>, response: Response<CocktailList>) {
+                if (response.body() != null) {
+                    view.showDrinkDetails(response.body()!!.drinks.first())
+                } else {
+                    view.showMessage("Erro! Tente novamente.")
+                }
+            }
+        })
     }
 
     override fun onCocktailClicked(cocktail: Cocktail) {
