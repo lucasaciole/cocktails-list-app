@@ -7,7 +7,7 @@ interface MainContract {
     interface View {
         fun showMessage(msg: String)
         fun showDrinksList(cocktails: List<Cocktail>)
-        fun showDrinkDetails()
+        fun showDrinkDetails(cocktail: Cocktail)
         fun showLoadingCircle()
         fun hideLoadingCircle()
     }
@@ -15,6 +15,6 @@ interface MainContract {
     interface Presenter {
         fun onActivityStart()
         fun onRandomButtonClicked()
-        fun onCocktailClicked(cocktails: Cocktail)
+        fun onCocktailClicked(cocktail: Cocktail)
     }
 }

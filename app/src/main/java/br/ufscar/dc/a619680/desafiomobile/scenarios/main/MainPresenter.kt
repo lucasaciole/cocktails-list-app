@@ -37,8 +37,22 @@ class MainPresenter(val view : MainContract.View) : MainContract.Presenter {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onCocktailClicked(cocktails: Cocktail) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onCocktailClicked(cocktail: Cocktail) {
+        val cocktailsService = RetrofitInitializer().createCocktailsService()
+
+        val call = cocktailsService.getDrinkByID(cocktail.idDrink)
+        call.enqueue(object : Callback<CocktailList> {
+            override fun onFailure(call: Call<CocktailList>, t: Throwable) {
+                view.showMessage("Erro na conexão.")
+            }
+            override fun onResponse(call: Call<CocktailList>, response: Response<CocktailList>) {
+                if(response.body() != null) {
+                    view.showDrinkDetails(response.body()!!.drinks.first())
+                } else {
+                    view.showMessage("Não foi possivel exibir esse coquetel.")
+                }
+            }
+        })
     }
 
 }

@@ -33,13 +33,13 @@ class CocktailAdapter (val context: Context, val cocktails: List<Cocktail>) : Re
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(context: Context, cocktail: Cocktail, itemClickListener: ((index: Int) -> Unit)?) {
-            itemView.drinkName.text = cocktail.strDrink
+            itemView.cocktailName.text = cocktail.strDrink
 
             GlideApp.with(context)
                     .load(cocktail.strDrinkThumb)
                     .placeholder(R.drawable.cocktail_placeholder)
                     .centerCrop()
-                    .into(itemView.imgCocktail)
+                    .into(itemView.cocktailImage)
 
             if(itemClickListener != null) {
                 itemView.setOnClickListener {

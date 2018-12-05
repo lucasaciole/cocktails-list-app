@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:progressBackgroundTint="@color/primaryDark"
             android:visibility="invisible"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvCocktails"
@@ -30,5 +31,7 @@
         android:id="@+id/randomButton"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="@string/random_button_txt" />
+        android:text="@string/random_button_txt"
+        android:textColor="@color/text"
+        android:backgroundTint="@color/primary"/>
 </LinearLayout>
